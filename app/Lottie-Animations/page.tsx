@@ -619,11 +619,20 @@ function ScrollControlledAnimation() {
                   </span>
                 </div>
                 <div className="h-2 bg-black/40 rounded-full overflow-hidden">
-                  <motion.div
+                  {/* <motion.div
                     className="h-full bg-gradient-to-r from-cyan-400 to-purple-500"
                     style={{ scaleX: scrollYProgress }}
                     transformOrigin="left"
+                  /> */}
+                  <motion.div
+                    className="h-full bg-gradient-to-r from-cyan-400 to-purple-500"
+                    style={{
+                      scaleX: scrollYProgress,
+                      transformOrigin: "left"
+                    }}
                   />
+
+
                 </div>
               </div>
             </div>
