@@ -171,12 +171,12 @@ function InputFocus() {
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
         />
-        <motion.div
-          className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-500"
+        {/* <motion.div
+          className="absolute left-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-500"
           initial={{ width: 0 }}
           animate={{ width: isFocused ? "100%" : 0 }}
           transition={{ duration: 0.3 }}
-        />
+        /> */}
         {isFocused && (
           <motion.div
             className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-purple-500/20 rounded-lg blur-xl -z-10"

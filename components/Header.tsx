@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -20,24 +21,30 @@ export function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a] backdrop-blur-xl border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a] backdrop-blur-xl border-b border-white/30">
       <div className="max-w-360 w-full mx-auto px-6 sm:px-10 lg:px-12 py-4 flex items-center justify-between overflow-x-hidden">
-        
         {/* Logo */}
         <Link
           href="/"
-          className="text-2xl font-bold bg-linear-to-r from-cyan-400 to-blue-500  bg-clip-text text-transparent"
+          // className="text-2xl font-medium from-cyan-300 to-cyan-600 bg-linear-to-r  bg-clip-text text-transparent"
         >
-          Motion Vision
+          <Image
+            src="./images/Logo_icon.svg"
+            width={150}
+            height={40}     
+            alt="Motion Vision Logo"
+          />
+          {/* Motion Vision */}
         </Link>
+        
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-10 text-white/80 whitespace-nowrap">
+        <nav className="hidden font-light md:flex gap-10 text-white/80 whitespace-nowrap">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
-              className="relative text-white/80 hover:text-white transition-colors py-2 group"
+              className="relative text-white  py-2 group"
             >
               <span className="relative inline-block">
                 {link.label}
@@ -46,14 +53,14 @@ export function Header() {
                 {pathname === link.href && (
                   <motion.div
                     layoutId="underline"
-                    className="absolute -bottom-1 left-0 h-0.5 w-full bg-linear-to-r from-cyan-400 to-blue-500"
+                    className="absolute -bottom-1 left-0 h-0.5 w-full bg-linear-to-r from-cyan-300 to-cyan-600"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
 
                 {/* HOVER underline */}
                 {pathname !== link.href && (
-                  <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-linear-to-r from-cyan-400 to-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+                  <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-linear-to-r from-cyan-300 to-cyan-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
                 )}
               </span>
             </Link>
@@ -98,14 +105,14 @@ export function Header() {
                       {pathname === link.href && (
                         <motion.div
                           layoutId="underline"
-                          className="absolute -bottom-1 left-0 h-0.5 w-full bg-linear-to-r from-cyan-400 to-blue-500"
+                          className="absolute -bottom-1 left-0 h-0.5 w-full bg-linear-to-r from-cyan-300 to-cyan-600"
                           transition={{ type: "spring", stiffness: 380, damping: 30 }}
                         />
                       )}
 
                       {/* HOVER underline (same as desktop) */}
                       {pathname !== link.href && (
-                        <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-linear-to-r from-cyan-400 to-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+                        <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-linear-to-r from-cyan-300 to-cyan-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
                       )}
                     </span>
                   </Link>

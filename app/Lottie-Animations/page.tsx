@@ -2,10 +2,22 @@
 import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import { Play, Pause } from "lucide-react";
+import Lottie from "lottie-react";
+
+
+import animationData from "@/public/images/an3.json";
+
+
+
+
+
 
 export default function LottieAnimations() {
   return (
-    <main className="pt-32 pb-20 bg-[#0a0a0a]">
+    <main className="pt-32 pb-20 ">
+      <LottieAnimationDemo />
+      
+     
       <HeroSection />
       <LogoAnimation />
       <LoopAnimation />
@@ -15,6 +27,34 @@ export default function LottieAnimations() {
     </main>
   );
 }
+
+
+function LottieAnimationDemo() {    
+  const ref = useRef<LottieRefCurrentHandle>(null);
+
+
+  return (
+    <div
+      onClick={() => {
+        ref.current?.stop(); // сбрасываем на начало
+        ref.current?.play(); // запускаем
+      }}
+      className="inline-block cursor-pointer"
+
+    >
+      <Lottie
+        lottieRef={ref}
+        animationData={animationData}
+        autoplay={false}
+        loop={false}
+        className="w-20 h-20"
+      />
+    </div>
+
+    
+  );
+}
+
 
 function HeroSection() {
   return (
@@ -619,11 +659,7 @@ function ScrollControlledAnimation() {
                   </span>
                 </div>
                 <div className="h-2 bg-black/40 rounded-full overflow-hidden">
-                  {/* <motion.div
-                    className="h-full bg-gradient-to-r from-cyan-400 to-purple-500"
-                    style={{ scaleX: scrollYProgress }}
-                    transformOrigin="left"
-                  /> */}
+                
                   <motion.div
                     className="h-full bg-gradient-to-r from-cyan-400 to-purple-500"
                     style={{
