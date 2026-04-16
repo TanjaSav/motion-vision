@@ -3,7 +3,6 @@ export function RoseVideo() {
     <video
       className="w-full h-auto"
       autoPlay
-      loop
       muted
       playsInline
     >

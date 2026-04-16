@@ -11,72 +11,76 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
+  // Navigation items
   const navLinks = [
     { label: "About", href: "/" },
-    { label: "Micro-interactions", href: "/Micro-Interactions" },
+    { label: "Interactive Animations", href: "/Interactive-Animations" },
     { label: "Scroll Animations", href: "/Scroll-Animations" },
     { label: "Page Transitions", href: "/Transitions" },
-    { label: "Lottie Animations", href: "/Lottie-Animations" },
-
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a] backdrop-blur-xl border-b border-white/30">
-      <div className="max-w-360 w-full mx-auto px-6 sm:px-10 lg:px-12 py-4 flex items-center justify-between overflow-x-hidden">
+    <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/30 bg-[#0a0a0a]/90 backdrop-blur-xl">
+      <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between overflow-x-hidden px-6 py-4 sm:px-10 lg:px-12">
         {/* Logo */}
-        <Link
-          href="/"
-          // className="text-2xl font-medium from-cyan-300 to-cyan-600 bg-linear-to-r  bg-clip-text text-transparent"
-        >
+        <Link href="/" className="shrink-0">
           <Image
-            src="./images/Logo_icon.svg"
+            src="/images/Logo_icon.svg"
             width={150}
-            height={40}     
+            height={40}
             alt="Motion Vision Logo"
+            priority
           />
-          {/* Motion Vision */}
         </Link>
-        
 
-        {/* Desktop Navigation */}
-        <nav className="hidden font-light md:flex gap-10 text-white/80 whitespace-nowrap">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="relative text-white  py-2 group"
-            >
-              <span className="relative inline-block">
-                {link.label}
+        {/* Desktop navigation */}
+        <nav className="hidden whitespace-nowrap font-light text-white/80 md:flex md:gap-10">
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
 
-                {/* ACTIVE underline */}
-                {pathname === link.href && (
-                  <motion.div
-                    layoutId="underline"
-                    className="absolute -bottom-1 left-0 h-0.5 w-full bg-linear-to-r from-cyan-300 to-cyan-600"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
-                )}
+            return (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="group relative py-2 text-white"
+              >
+                <span className="relative inline-block">
+                  {link.label}
 
-                {/* HOVER underline */}
-                {pathname !== link.href && (
-                  <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-linear-to-r from-cyan-300 to-cyan-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-                )}
-              </span>
-            </Link>
-          ))}
+                  {/* Hover underline for inactive items */}
+                  {!isActive && (
+                    <span className="absolute -bottom-1 left-0 h-[0.5px] w-full origin-left scale-x-0 bg-linear-to-r from-cyan-300/70 to-blue-400/40 transition-transform duration-300 group-hover:scale-x-100" />
+                  )}
+
+                  {/* Active underline */}
+                  {isActive && (
+                    <motion.div
+                      layoutId="nav-underline"
+                      className="absolute -bottom-1 left-0 h-[0.5px] w-full bg-linear-to-r from-cyan-300/70 to-blue-400/40"
+                      transition={{
+                        type: "spring",
+                        stiffness: 380,
+                        damping: 30,
+                      }}
+                    />
+                  )}
+                </span>
+              </Link>
+            );
+          })}
         </nav>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile menu toggle */}
         <button
-          className="md:hidden text-white cursor-pointer"
-          onClick={() => setOpen(!open)}
+          className="cursor-pointer text-white md:hidden"
+          onClick={() => setOpen((prev) => !prev)}
+          aria-label="Toggle menu"
         >
           {open ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile dropdown menu */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -84,40 +88,48 @@ export function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden bg-[#0a0a0a]/95 backdrop-blur-xl border-t border-white/10"
+            className="border-t border-white/10 bg-[#0a0a0a]/95 backdrop-blur-xl md:hidden"
           >
-            <nav className="flex flex-col items-center py-6 gap-6 text-white/90 text-md w-full">
-              {navLinks.map((link) => (
-                <motion.div
-                  key={link.label}
-                  className="relative py-2 group"
-                  whileTap={{ scale: 0.97 }}
-                >
-                  <Link
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="block"
+            <nav className="flex w-full flex-col items-center gap-6 py-6 text-md text-white/90">
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+
+                return (
+                  <motion.div
+                    key={link.label}
+                    className="group relative py-2"
+                    whileTap={{ scale: 0.97 }}
                   >
-                    <span className="relative inline-block">
-                      {link.label}
+                    <Link
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className="block text-white"
+                    >
+                      <span className="relative inline-block">
+                        {link.label}
 
-                      {/* ACTIVE underline (same as desktop) */}
-                      {pathname === link.href && (
-                        <motion.div
-                          layoutId="underline"
-                          className="absolute -bottom-1 left-0 h-0.5 w-full bg-linear-to-r from-cyan-300 to-cyan-600"
-                          transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                        />
-                      )}
+                        {/* Hover underline for inactive items */}
+                        {!isActive && (
+                          <span className="absolute -bottom-1 left-0 h-[0.5px] w-full origin-left scale-x-0 bg-linear-to-r from-cyan-300/70 to-blue-400/40 transition-transform duration-300 group-hover:scale-x-100" />
+                        )}
 
-                      {/* HOVER underline (same as desktop) */}
-                      {pathname !== link.href && (
-                        <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-linear-to-r from-cyan-300 to-cyan-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-                      )}
-                    </span>
-                  </Link>
-                </motion.div>
-              ))}
+                        {/* Active underline */}
+                        {isActive && (
+                          <motion.div
+                            layoutId="nav-underline"
+                            className="absolute -bottom-1 left-0 h-[0.5px] w-full bg-linear-to-r from-cyan-300/70 to-blue-400/40"
+                            transition={{
+                              type: "spring",
+                              stiffness: 380,
+                              damping: 30,
+                            }}
+                          />
+                        )}
+                      </span>
+                    </Link>
+                  </motion.div>
+                );
+              })}
             </nav>
           </motion.div>
         )}

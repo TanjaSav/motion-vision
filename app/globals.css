@@ -78,3 +78,40 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-main), serif;
 
 }
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(103, 232, 249, 0.35) rgba(255, 255, 255, 0.04);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    rgba(103, 232, 249, 0.5),
+    rgba(96, 165, 250, 0.45)
+  );
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    to bottom,
+    rgba(103, 232, 249, 0.7),
+    rgba(96, 165, 250, 0.65)
+  );
+}
+
+.custom-scrollbar::-webkit-scrollbar-corner {
+  background: transparent;
+}
