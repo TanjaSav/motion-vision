@@ -33,9 +33,9 @@ function IntroSection() {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
           <h1 className="font-serif text-4xl font-light leading-[1.3] text-white sm:text-5xl lg:text-6xl">
-            Micro-interactions make
+            Animations that bring
             <br />
-            interfaces feel alive
+            interfaces to life
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-base font-light leading-8 text-white/70 sm:text-lg">
@@ -129,7 +129,7 @@ function LikeButton() {
   return (
     <DemoCard
       title="Like Button"
-      description="Click feedback with scale and particle burst."
+      description="Click feedback with scale and particle burst"
     >
       <motion.button
         className="relative"
@@ -175,7 +175,7 @@ function ToggleSwitch() {
   return (
     <DemoCard
       title="Toggle Switch"
-      description="A compact binary control with spring motion."
+      description="A compact binary control with spring motion"
     >
       <motion.button
         className={`flex h-12 w-24 cursor-pointer items-center rounded-full p-1 transition-colors ${
@@ -265,7 +265,7 @@ function CardHoverTilt() {
   return (
     <DemoCard
       title="Card Hover Tilt"
-      description="A subtle 3D tilt effect that follows the cursor."
+      description="A subtle 3D tilt effect that follows the cursor"
     >
       <motion.div
         className="flex h-40 w-40 items-center justify-center rounded-3xl border border-white/15 bg-white/5 backdrop-blur-xl"
@@ -388,15 +388,15 @@ function LottieSection() {
           <div className="grid gap-6">
             <InfoCard
               title="What it is"
-              text="Lottie renders exported JSON animation data from tools like After Effects. It is ideal for crisp, scalable interface motion."
+              text="Lottie renders exported JSON animation data from tools like After Effects. It is ideal for crisp, scalable interface motion"
             />
             <InfoCard
               title="Where to use it"
-              text="Use it in onboarding, empty states, icon feedback, loaders, success messages, and small branded interactions."
+              text="Use it in onboarding, empty states, icon feedback, loaders, success messages, and small branded interactions"
             />
             <InfoCard
               title="What to remember"
-              text="Keep files small, avoid overusing complex scenes, and use Lottie where vector motion gives more value than CSS or simple transforms."
+              text="Keep files small, avoid overusing complex scenes, and use Lottie where vector motion gives more value than CSS or simple transforms"
             />
           </div>
         </div>
@@ -429,7 +429,7 @@ function MotionSpecsSection() {
         >
           <h2 className="font-serif text-3xl font-light leading-[1.5] text-white md:text-4xl">
             Motion specifications help define
-            interaction behavior consistently.
+            interaction behavior consistently
           </h2>
         </motion.div>
 
@@ -547,181 +547,13 @@ function InfoCard({
   );
 }
 
-// function CodeExamples() {
-//   const examples = [
-//     {
-//       title: "Hover Button",
-//       description:
-//         "A simple hover interaction using scale, shadow, and a moving highlight layer",
-//       code: `const HoverButton = () => (
-//   <motion.button
-//     className="relative overflow-hidden rounded-full border border-white/10 bg-white/5 px-8 py-4 text-white"
-//     whileHover={{
-//       scale: 1.08,
-//       boxShadow: "0 18px 36px rgba(56, 189, 248, 0.18)",
-//     }}
-//     whileTap={{ scale: 0.96 }}
-//     transition={{ type: "spring", stiffness: 320, damping: 20 }}
-//   >
-//     <motion.div
-//       className="absolute inset-0 bg-white/10"
-//       initial={{ x: "-100%" }}
-//       whileHover={{ x: "100%" }}
-//       transition={{ duration: 0.55 }}
-//     />
-//     <span className="relative z-10">Hover Me</span>
-//   </motion.button>
-// );`,
-//     },
-//     {
-//       title: "Like Button",
-//       description:
-//         "A feedback interaction with scaling and particle burst after click",
-//       code: `const [liked, setLiked] = useState(false);
-// const [particles, setParticles] = useState<number[]>([]);
-
-// const handleLike = () => {
-//   setLiked(!liked);
-//   if (!liked) {
-//     setParticles(Array.from({ length: 10 }, (_, i) => i));
-//     setTimeout(() => setParticles([]), 900);
-//   }
-// };`,
-//     },
-//     {
-//       title: "Toggle Switch",
-//       description:
-//         "A compact spring-based toggle pattern with a sliding knob",
-//       code: `const [isOn, setIsOn] = useState(false);
-
-// <motion.button
-//   className={\`flex h-12 w-24 items-center rounded-full p-1 \${
-//     isOn ? "bg-cyan-400/25" : "bg-white/10"
-//   }\`}
-//   onClick={() => setIsOn(!isOn)}
-// >
-//   <motion.div
-//     className="h-10 w-10 rounded-full bg-white"
-//     animate={{ x: isOn ? 48 : 0 }}
-//     transition={{ type: "spring", stiffness: 700, damping: 30 }}
-//   />
-// </motion.button>`,
-//     },
-//     {
-//       title: "Input Focus",
-//       description:
-//         "A focused field with animated underline and glow feedback",
-//       code: `const [isFocused, setIsFocused] = useState(false);
-
-// <input
-//   onFocus={() => setIsFocused(true)}
-//   onBlur={() => setIsFocused(false)}
-// />
-
-// <motion.div
-//   className="absolute -bottom-1 left-0 h-px bg-gradient-to-r from-cyan-300/70 to-blue-400/40"
-//   initial={{ width: 0 }}
-//   animate={{ width: isFocused ? "100%" : 0 }}
-//   transition={{ duration: 0.3 }}
-// />`,
-//     },
-//     {
-//       title: "Card Hover Tilt",
-//       description:
-//         "A 3D tilt card based on cursor position inside the element",
-//       code: `const [rotateX, setRotateX] = useState(0);
-// const [rotateY, setRotateY] = useState(0);
-
-// <motion.div
-//   animate={{ rotateX, rotateY }}
-//   transition={{ type: "spring", stiffness: 320, damping: 26 }}
-//   style={{ transformStyle: "preserve-3d" }}
-// >
-//   <Sparkles size={44} className="text-cyan-300" />
-// </motion.div>`,
-//     },
-//     {
-//       title: "Cursor Magnet",
-//       description:
-//         "A subtle cursor-follow effect that makes the element feel reactive",
-//       code: `const [position, setPosition] = useState({ x: 0, y: 0 });
-
-// <motion.button
-//   animate={{ x: position.x, y: position.y }}
-//   transition={{ type: "spring", stiffness: 150, damping: 16 }}
-// >
-//   Pull Me
-// </motion.button>`,
-//     },
-//     {
-//       title: "Lottie Animation",
-//       description:
-//         "A real JSON-based animation rendered with lottie-react",
-//       code: `import Lottie from "lottie-react";
-// import rocketAnimation from "@/public/lottie/rocket.json";
-
-// <Lottie
-//   animationData={rocketAnimation}
-//   loop={true}
-//   autoplay={true}
-// />`,
-//     },
-//   ];
-
-//   return (
-//     <section className="relative overflow-hidden py-24 sm:py-28">
-//       {/* Shared page container */}
-//       <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-10 lg:px-12">
-//         {/* Section heading */}
-//         <motion.div
-//           className="mx-auto max-w-5xl text-center"
-//           initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-//           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-//           viewport={{ once: false, amount: 0.3 }}
-//           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-//         >
-//           <h2 className="font-serif text-3xl font-light leading-[1.5] text-white md:text-4xl">
-//             Code examples show how micro-interactions
-//             are built in real interfaces
-//           </h2>
-//         </motion.div>
-
-//         {/* Code cards */}
-//         <div className="mt-14 grid gap-6 lg:grid-cols-2">
-//           {examples.map((example, index) => (
-//             <motion.div
-//               key={example.title}
-//               className="rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-xl"
-//               initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
-//               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-//               viewport={{ once: false, amount: 0.3 }}
-//               transition={{ duration: 0.9, delay: index * 0.08 }}
-//             >
-//               <h3 className="text-xl font-normal text-white">{example.title}</h3>
-
-//               <div className="mt-4 h-px origin-left bg-gradient-to-r from-cyan-300/70 to-blue-400/40" />
-
-//               <p className="mt-4 text-sm font-light leading-7 text-white/65">
-//                 {example.description}
-//               </p>
-
-//               <pre className="mt-6 max-h-[420px] overflow-x-auto overflow-y-auto text-xs leading-7 text-white/65">
-//                 <code>{example.code}</code>
-//               </pre>
-//             </motion.div>
-//           ))}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
 
 function CodeExamples() {
   const examples = [
     {
       title: "Hover Button",
       description:
-        "A simple hover interaction using scale, shadow, and a moving highlight layer.",
+        "A simple hover interaction using scale, shadow, and a moving highlight layer",
       code: `const HoverButton = () => (
   <motion.button
     className="relative overflow-hidden rounded-full border border-white/10 bg-white/5 px-8 py-4 text-white"
@@ -745,7 +577,7 @@ function CodeExamples() {
     {
       title: "Like Button",
       description:
-        "A feedback interaction with scaling and particle burst after click.",
+        "A feedback interaction with scaling and particle burst after click",
       code: `const [liked, setLiked] = useState(false);
 const [particles, setParticles] = useState<number[]>([]);
 
@@ -760,7 +592,7 @@ const handleLike = () => {
     {
       title: "Toggle Switch",
       description:
-        "A compact spring-based toggle pattern with a sliding knob.",
+        "A compact spring-based toggle pattern with a sliding knob",
       code: `const [isOn, setIsOn] = useState(false);
 
 <motion.button
@@ -779,7 +611,7 @@ const handleLike = () => {
     {
       title: "Input Focus",
       description:
-        "A focused field with animated underline and glow feedback.",
+        "A focused field with animated underline and glow feedback",
       code: `const [isFocused, setIsFocused] = useState(false);
 
 <input
@@ -797,7 +629,7 @@ const handleLike = () => {
     {
       title: "Card Hover Tilt",
       description:
-        "A 3D tilt card based on cursor position inside the element.",
+        "A 3D tilt card based on cursor position inside the element",
       code: `const [rotateX, setRotateX] = useState(0);
 const [rotateY, setRotateY] = useState(0);
 
@@ -812,7 +644,7 @@ const [rotateY, setRotateY] = useState(0);
     {
       title: "Cursor Magnet",
       description:
-        "A subtle cursor-follow effect that makes the element feel reactive.",
+        "A subtle cursor-follow effect that makes the element feel reactive",
       code: `const [position, setPosition] = useState({ x: 0, y: 0 });
 
 <motion.button
@@ -825,7 +657,7 @@ const [rotateY, setRotateY] = useState(0);
     {
       title: "Lottie Animation",
       description:
-        "A real JSON-based animation rendered with lottie-react.",
+        "A real JSON-based animation rendered with lottie-react",
       code: `import Lottie from "lottie-react";
 import rocketAnimation from "@/public/lottie/rocket.json";
 
@@ -850,8 +682,9 @@ import rocketAnimation from "@/public/lottie/rocket.json";
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
           <h2 className="font-serif text-3xl font-light leading-[1.5] text-white md:text-4xl">
-            Code examples show how micro-interactions
-            are built in real interfaces.
+            Code examples show how interactions
+          <br />
+            are built in real interfaces
           </h2>
         </motion.div>
 
