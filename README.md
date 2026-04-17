@@ -29,8 +29,6 @@ A fully interactive animation showcase demonstrating modern UI motion techniques
   
 - Lottie animations
   - JSON-based motion assets  
-  - Lightweight and scalable  
-  - Ideal for UI feedback and visual accents 
 
 - Scroll animations
   - Parallax layers (GSAP + ScrollTrigger)  
