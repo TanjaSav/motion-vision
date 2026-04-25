@@ -139,15 +139,7 @@ export default function PageTransitions() {
                   "The outgoing page contracts while the next page grows into place, creating a compact zoom effect"}
               </p>
 
-              <button
-                type="button"
-                onClick={() => setPage(page === 3 ? 1 : page + 1)}
-                className="mt-6 inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm text-white transition-all hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a] sm:mt-8 sm:px-6 sm:text-base"
-                aria-label={`Show next page preview. Current page is ${page}`}
-              >
-                Next page
-                <ArrowRight size={18} aria-hidden="true" />
-              </button>
+              
             </div>
           </div>
 
